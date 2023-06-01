@@ -5,6 +5,16 @@ nomeUsuario.innerHTML = sessionStorage.getItem('NOME_USUARIO')
 emailUsuario.innerHTML = sessionStorage.getItem('EMAIL_USUARIO')
 cnpjUsuario.innerHTML = sessionStorage.getItem('CNPJ_USUARIO')
 nomeCliente.innerHTML = sessionStorage.getItem('EMPRESA_USUARIO')
+window.onload(ChecarSeUsuarioEstaLogado())
+function ChecarSeUsuarioEstaLogado(){
+    const idUsuario = sessionStorage.getItem('ID_USUARIO')
+    const isLogado = (idUsuario != "")
+
+    if(isLogado == false){
+        alert('Realize o login para acessar essa janela!')
+        window.location = "login.html";
+    }
+}
 
 document.querySelector("#addunidades").addEventListener("click", () => {
 
@@ -113,10 +123,8 @@ document.querySelector("#addfuncionario").addEventListener("click", () => {
 
 document.querySelector("#fecharjanelafuncionario").addEventListener("click", () => {
 
-
     var janelacadastrofuncionario = document.querySelector("#janelacadastrofuncionario").style.display = "none";
     var botaocriar = document.querySelector("#btncriarfuncionario").style.display = "block";
-
 
 });
 
@@ -186,6 +194,16 @@ function MascaraCnpj() {
     if (tamanhoCnpj == 10) {
         cnpjMascara.value += "/"
     }
+}
+
+function Deslogar(){
+    sessionStorage.CNPJ_USUARIO = ""
+    sessionStorage.EMPRESA_USUARIO = ""
+    sessionStorage.EMAIL_USUARIO = ""
+    sessionStorage.NOME_USUARIO = ""
+    sessionStorage.NOME_USUARIO = ""
+    sessionStorage.ID_USUARIO = ""
+    sessionStorage.NIVEL_USUARIO = ""
 }
 
 function onsenha() {
@@ -312,9 +330,9 @@ function cadastrarUnidade() {
 }
 
 function abrirteladeescolhaunidade() {
-    var teladeescolha = document.querySelector("#listadeunidadeparaupdate").style.display = "flex";
+    var teladeescolha = document.querySelector("#janelaEditarUnidade").style.display = "flex";
     var h1 = document.querySelector("#agaumm").style.opacity = "0";
-    let botaocriar = document.querySelector("#btncriarunidade").style.display = "none";
+    let botaocriar = document.querySelector("#janelacadastrounidade").style.display = "none";
 }
 
 function cadastrarhardware() {
@@ -343,10 +361,12 @@ function abrirteladeescolhahardware() {
     let botaocriar = document.querySelector("#btncriarhardware").style.display = "none";
 }
 
-function abrirteladeescolhadeunidadefuncionario() {
-    var teladeescolha = document.querySelector("#listadeunidadedefuncionarioparaupdate").style.display = "flex";
-    var h1 = document.querySelector("#agaummm").style.opacity = "0";
-    let botaocriar = document.querySelector("#btncriarfuncionario").style.display = "none";
+function telaEditarFunc() {
+    let telaFunc = document.querySelector("#janelacadastrofuncionario")
+    let telaEditarFunc = document.querySelector('#janelaeditarfuncionario')
+    
+    telaFunc.style.display = "none"
+    telaEditarFunc.style.display = "flex"
 }
 
 function hardwareCadastro(){
@@ -360,7 +380,7 @@ function hardwareCadastro(){
     const cpuModelo = document.querySelector('#cpuModelo').value
     const discoModelo = document.querySelector('#discoModelo').value
     const memoriaModelo = document.querySelector('#memoriaModelo').value
-    const nivel = sessionStorage.getItem()
+    const nivel = sessionStorage.getItem('NIVEL_USUARIO')
 
     if(!(nivel == 3 || nivel == 2)){
         alert('Você não tem permissão para cadastrar um hardware!')
@@ -404,16 +424,20 @@ function funcionarioCadastro(){
     const unidade = document.querySelector('#selUnidade').value
     const empresa = sessionStorage.getItem('EMPRESA_USUARIO')
     const idCliente = sessionStorage.getItem('ID_USUARIO')
-    const email = nome.toLowerCase() + "." + sobrenome.toLowerCase() + "@" + empresa.toLowerCase() + ".com" 
-    const senha = 'Padrao1!'
     let cargo
     const nivelUsuario = sessionStorage.getItem('NIVEL_USUARIO')
+    const validarSeTemCampoVazio = nome.length + sobrenome.length + nivel.length + data.length + celular.length + unidade.length
 
     if(!(nivelUsuario == 2 || nivelUsuario == 3)){
         alert('Você não possui permissão para cadastrar um usuário!')
         return false
     }
-
+    if(validarSeTemCampoVazio == 0){
+        alert("Erro!! Todos os campos são obrigatórios! Preencha os campos corretamente")
+        return false
+    }
+    const email = nome.toLowerCase() + "." + sobrenome.toLowerCase() + "@" + empresa.toLowerCase() + ".com" 
+    const senha = 'Padrao1!'
     if(nivel == 1){
         cargo = "Analista NOC"
     }else if(nivel == 2){
@@ -422,7 +446,7 @@ function funcionarioCadastro(){
         alert('Escolha o cargo do funcionario!')
         return false
     }
-
+    
     fetch(`/usuarios/cadastrarFuncionario`, {
         method: "POST",
         headers: {
@@ -502,16 +526,158 @@ function FixoMascara() {
 }
 
 const mascaraCelular = document.getElementById('funCelular');
-
 function CelularMascara() {
-
+    
     let tamanhoTel = mascaraCelular.value.length
-
+    
     if (tamanhoTel == 2) {
         mascaraCelular.value += " "
     }
-
+    
     if (tamanhoTel == 8) {
         mascaraCelular.value += "-"
     }
+}
+const mascaraCelularFunc = document.getElementById('edCelular');
+function CelularMascaraEditarFunc() {
+    
+    let tamanhoTel = mascaraCelularFunc.value.length
+    
+    if (tamanhoTel == 2) {
+        mascaraCelularFunc.value += " "
+    }
+    
+    if (tamanhoTel == 8) {
+        mascaraCelularFunc.value += "-"
+    }
+}
+
+function editarUnidade(){
+    let unidade = document.querySelector('#selEditarUnidade').value
+    let telefone = document.querySelector('#edTelefone').value
+    let nome = document.querySelector('#edNomeUnidade').value
+    let cep = document.querySelector('#edCep').value
+    let logradouro = document.querySelector('#edLogradouro').value
+    let bairro = document.querySelector('#edBairro').value
+    let numero = document.querySelector('#edNumero').value
+
+    fetch(`/usuarios/editarUnidade`,{
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            unidade,
+            telefone,
+            nome,
+            cep,
+            logradouro,
+            bairro,
+            numero
+        })
+    }).then(function (resposta){
+        if(resposta.ok){
+            alert('Editado com sucesso')
+
+            window.location = "perfil.html"
+        }else{
+            alert('Falha ao editar')
+        }
+    })
+}
+
+function excluirUnidade(){
+    let unidade = document.querySelector('#selEditarUnidade').value
+
+    fetch(`/usuarios/excluirUnidade`,{
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            unidade
+        })
+    }).then(function (resposta){
+        if(resposta.ok){
+            alert('Excluído com sucesso')
+
+            window.location = "perfil.html"
+        }else{
+            alert('Falha ao excluir')
+        }
+    })
+}
+
+function excluirFuncionario(){
+    let funcionario = document.querySelector('#selEditarFuncionario').value
+    if(funcionario == ""){
+        alert('Selecione um usuário para poder excluir!')
+    }else{
+    fetch(`/usuarios/excluirFuncionario`,{
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            funcionario
+        })
+    }).then(function (resposta){
+        if(resposta.ok){
+            alert('Excluído com sucesso')
+
+            window.location = "perfil.html"
+        }else{
+            alert('Falha ao excluir')
+        }
+    })
+}
+}
+
+function editarFuncionario(){
+    let funcionario = document.querySelector('#selEditarFuncionario').value
+    let nome = document.querySelector('#edNomeFuncionario').value
+    let cargo = document.querySelector('#edCargo').value
+    let dtNascimento = document.querySelector('#edDtNascimento').value
+    let celular = document.querySelector('#edCelular').value
+    let sobrenome = document.querySelector('#edSobrenome').value
+    let unidade = document.querySelector('#edUnidade').value
+    if(funcionario == ""){
+        alert('Selecione um usuário para poder editar!!!')
+    }else{
+        if(unidade == ""){
+            unidade = null;
+        }
+
+        fetch(`/usuarios/editarFuncionario`,{
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                funcionario,
+                nome,
+                cargo,
+                dtNascimento,
+                celular,
+                sobrenome,
+                unidade
+            })
+        }).then(function (resposta){
+            if(resposta.ok){
+                alert('Editado com sucesso')
+
+                window.location = "perfil.html"
+            }else{
+                alert('Falha ao editar')
+            }
+        })
+    }    
+}
+
+function voltarTelaFuncionario(){
+    let telaFunc = document.querySelector('#janelacadastrofuncionario')
+    let telaEditarFunc = document.querySelector('#janelaeditarfuncionario')
+
+    telaFunc.style.display = "flex"
+    telaEditarFunc.style.display = "none"
 }

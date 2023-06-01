@@ -5,8 +5,9 @@
 }
 
 body{
-    background-color: #1d2027 !important;
+    background-color: #050012 !important;
     max-height: 105vh;
+    transition: background-color 1s 0.2s linear;
 }
 
 .conteudo{
@@ -17,23 +18,56 @@ body{
     display: flex;
     width: 23vw;
     height: 100vh;
-    justify-content: flex-end;
     position: fixed;
+    transition: background-color 1s 0.2s linear;
+    
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
 .navbar{
-    width: 90%;
-    height: 96%;
+    width: 100%;
+    height: 100%;
     background-color: #242731;
-    margin-top: 2vh;
-    border-radius: 10px;
-    padding: 20px;
+    padding: 30px 30px;
     display: flex;
     flex-direction: column;
     justify-content: start;
     position: relative;
     box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.166);
+    transition: background-color 1s 0.2s linear;
 }
+
+#divlightmode{
+    margin-bottom: 2%;
+}
+
+.sol,
+.lua {
+    position: absolute;
+    opacity: 0;
+}
+
+.lua {
+    opacity: 1;
+    color: black;
+}
+
+.sol {
+    opacity: 0;
+    color: rgb(255, 170, 0);
+}
+
 
 .logoNav{
     display: flex;
@@ -46,6 +80,7 @@ body{
 }
 
 .logoNav p{
+    font-size: 20px;
     color: #60a5fa;
 }
 
@@ -74,7 +109,7 @@ body{
     border: none;
     outline: none;
     color: #757575;
-    width: 250px;
+    width: 100%;
     height: 30px;
     padding: 5px;
     font-size: 18px;
@@ -111,6 +146,18 @@ body{
     margin-top: -45px;
 }
 
+.styleFiltro5{
+    background-color: #1d2027;
+    border: none;
+    outline: none;
+    color: #757575;
+    width: 59px;
+    height: 30px;
+    padding: 5px;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
 .opcao{
     display: flex;
     gap: 15px;
@@ -143,17 +190,27 @@ body{
     flex-direction: column;
     gap: 50px;
     margin-left: 22%;
+    transition: backgroundImage 1s 0.2s linear;
+    background-size: cover;
 }
 
 .kpi{
     display: flex;
     width: 90%;
-    height: 150px;
+    height: 115px;
     background-color: #242731;
     border-radius: 10px;
-    margin-top: 2vh;
+    margin-top: -4vh;
     box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.166);
+    transition: background-color 1s 0.2s linear;
 
+}
+
+.tituloKpi{
+    color: white;
+    width: 90%;
+    height: 10px;
+    margin-top: 2vh;
 }
 
 .divisor{
@@ -176,11 +233,18 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
     width: 20%;
     height: 100%;
     color: rgb(190, 190, 190);
     padding: 5px;
-    gap: 25px;
+    padding: 7px;
+    transition: background-color 1s 0.2s linear;
+}
+
+.bigN p{
+    text-align: center;
+    font-size: 14px;
 }
 
 .barra{
@@ -191,7 +255,7 @@ body{
 .barra01{
     width: 50px;
     height: 8px;
-    background-color: #34d399;
+    background-color: #1FB981;
 }
 
 .barra02{
@@ -201,30 +265,30 @@ body{
 }
 
 .metrica01{
-    font-size: 40px;
-    color: #00008B;
+    font-size: 30px;
+    color: #487CBC;
 }
 
 .metrica02{
-    font-size: 40px;
-    color: #DC143C; 
+    font-size: 30px;
+    color: #5F57BD; 
 }
 
 .metrica03{
-    font-size: 40px;
-    color: #4B0082;
+    font-size: 30px;
+    color: #964EBF;
 }
 
 .metrica04{
-    font-size: 40px;
-    color: #0000FF;
+    font-size: 30px;
+    color: #B3345E;
 }
 
 .corAlertas{
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    margin: 15px 0 0 -20px;
+    gap: 3px;
+    margin: 5px 0 0 -20px;
 }
 
 .b01{
@@ -235,7 +299,7 @@ body{
 }
 
 .verde{
-    color: #34d399;
+    color: #1FB981;
 }
 
 .amarelo{
@@ -253,111 +317,197 @@ body{
     /* height: 440px; */
     /* background-color: cadetblue; */
     gap: 15px;
+    margin-bottom: 2vh;
 }
 
 .box01{
     display: flex;
     justify-content: space-between;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.areagrafico{
+    transition: background-color 1s 0.2s linear;
 }
 
 .graf01{
-    width: 250px;
-    height: 250px;
+    width: 15vw;
+    height: 34vh;
     background-color: #242731;
     border-radius: 10px;
     box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.166);
-
+    margin-top: 0vh;
 }
 
 .graf02{
-    width: 250px;
-    height: 250px;
+    width: 15vw;
+    height: 34vh;
     background-color: #242731;
     border-radius: 10px;
-    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.166);  
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.166);
+    margin-top: 0vh;
 }
 
 .graf03{
-    width: 550px;
-    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35vw;
+    height: 34vh;
     background-color: #242731;
     border-radius: 10px;
     box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.166);
-
 }
 
 .graf04{
-    width: 810px;
-    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 53vw;
+    height: 34vh;
     background-color: #242731;
     border-radius: 10px;
     box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.166);
-
 }
 
 .graf05{
-    width: 250px;
-    height: 250px;
+    width: 15vw;
+    height: 34vh;
     background-color: #242731;
     border-radius: 10px;
-    margin-left: 816px;
-    margin-top: -250px;
     box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.166);
-
 }
 
 .graf06{
-    width: 810px;
-    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 53vw;
+    height: 34vh;
     background-color: #242731;
     border-radius: 10px;
     box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.166);
-
 }
 
 .graf07{
-    width: 250px;
-    height: 250px;
+    width: 15vw;
+    height: 34vh;
     background-color: #242731;
     border-radius: 10px;
-    margin-left: 816px;
-    margin-top: -250px;
     box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.166);
-
 }
 
 .graf08{
-    width: 810px;
-    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 53vw;
+    height: 34vh;
     background-color: #242731;
     border-radius: 10px;
     box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.166);
-
 }
 
 .graf09{
-    width: 250px;
-    height: 250px;
+    width: 15vw;
+    height: 34vh;
     background-color: #242731;
     border-radius: 10px;
-    margin-left: 816px;
-    margin-top: -250px;
     box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.166);
+}
 
+.tituloLine{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 5px;
+    width: 35vw;
+}
+
+.tituloLine2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 5px;
+    width: 53vw;
+}
+
+.tituloRosca{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 5px;
+    width: 15vw;
+}
+
+.tituloRosca p{
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.tituloLine p{
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.tituloLine2 p{
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
 }
 
 .txt{
     color: white;
+    margin-top: -5vh;
 }
 
 .txt02{
     color: white;
-    margin-left: 80%;
-    margin-top: -40px;
+    margin-left: 56vw;
+    margin-top: -6vh;
+}
+
+.txt03{
+    color: white;
+    margin-top: 1vh;
 }
 
 .txt04{
     color: white;
-    margin-left: 55%;
-    margin-top: -40px;
+    margin-left: 39vw;
+    margin-top: -6vh;
+}
+
+.txt05{
+    color: white;
+    margin-left: 55vw;
+    margin-top: -6vh;
+}
+
+.txt06{
+    color: white;
+    margin-top: 1vh;
+}
+
+.txt07{
+    color: white;
+    margin-left: 55vw;
+    margin-top: -6vh;
+}
+
+.txt08{
+    color: white;
+    margin-top: 1vh;
+}
+
+.txt09{
+    color: white;
+    margin-left: 55vw;
+    margin-top: -6vh;
 }

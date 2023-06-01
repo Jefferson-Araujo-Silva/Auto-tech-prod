@@ -93,7 +93,7 @@ function cadastrarUnidade(req, res){
     const cep = req.body.cep;
     const bairro = req.body.bairro;
     const numero = req.body.numero;
-    const fkUsuario = req.body.fkUsuario;
+    const fkUsuario = req.body.usuario;
 
     usuarioModel.cadastrarUnidade(fkUsuario, nome, telefone, cep, bairro, numero, logradouro)
         .then(
@@ -131,6 +131,183 @@ function pegarInfoBanco(req, res){
         )
 }
 
+function pegarInfoDash(req, res){
+    const idCliente = req.params.idCliente;
+
+    usuarioModel.pegarInfoDash(idCliente)
+        .then(
+            function(resultado){
+                res.json(resultado)
+            }
+        )
+}
+
+function obterDadosDash(req, res){
+    const idHardware = req.params.idHardware;
+
+    usuarioModel.obterDadosDash(idHardware)
+        .then(
+            function(resultado){
+                res.json(resultado)
+            }
+        )
+}
+
+function atualizarGrafico(req, res){
+    const idHardware = req.params.idHardware;
+
+    usuarioModel.atualizarGrafico(idHardware)
+        .then(
+            function(resultado){
+                res.json(resultado)
+            }
+        )
+}
+
+function obterDadosRam(req, res){
+    const idHardware = req.params.idHardware;
+
+    usuarioModel.obterDadosRam(idHardware)
+        .then(
+            function(resultado){
+                res.json(resultado)
+            }
+        )
+}
+
+function atualizarGraficoRam(req, res){
+    const idHardware = req.params.idHardware;
+
+    usuarioModel.atualizarGraficoRam(idHardware)
+        .then(
+            function(resultado){
+                res.json(resultado)
+            }
+        )
+}
+
+function obterDadosDisco(req, res){
+    const idHardware = req.params.idHardware;
+
+    usuarioModel.obterDadosDisco(idHardware)
+        .then(
+            function(resultado){
+                res.json(resultado)
+            }
+        )
+}
+
+function atualizarGraficoDisco(req, res){
+    const idHardware = req.params.idHardware;
+
+    usuarioModel.atualizarGraficoDisco(idHardware)
+        .then(
+            function(resultado){
+                res.json(resultado)
+            }
+        )
+}
+
+function obterDadosRede(req, res){
+    const idHardware = req.params.idHardware;
+
+    usuarioModel.obterDadosRede(idHardware)
+        .then(
+            function(resultado){
+                res.json(resultado)
+            }
+        )
+}
+
+function atualizarGraficoRede(req, res){
+    const idHardware = req.params.idHardware;
+
+    usuarioModel.atualizarGraficoRede(idHardware)
+        .then(
+            function(resultado){
+                res.json(resultado)
+            }
+        )
+}
+
+function pegarDadosGraficosRosca(req, res){
+    const idHardware = req.params.idHardware;
+
+    usuarioModel.pegarDadosGraficosRosca(idHardware)
+        .then(
+            function(resultado){
+                res.json(resultado)
+            }
+        )
+}
+
+function editarUnidade(req, res){
+    const unidade = req.body.unidade
+    const telefone = req.body.telefone
+    const nome = req.body.nome
+    const cep = req.body.cep
+    const logradouro = req.body.logradouro
+    const bairro = req.body.bairro
+    const numero = req.body.numero
+
+    usuarioModel.editarUnidade(unidade, telefone, nome, cep, logradouro, bairro, numero)
+        .then(
+            function(resultado){
+                res.json(resultado)
+            }
+        )
+}
+
+function excluirUnidade(req, res){
+    const unidade = req.body.unidade
+
+    usuarioModel.excluirUnidade(unidade)
+        .then(
+            function(resultado){
+                res.json(resultado)
+            }
+        )
+}
+
+function editarFuncionario(req, res){
+    const funcionario = req.body.funcionario
+    const nome = req.body.nome
+    const cargo = req.body.cargo
+    const dtNascimento = req.body.dtNascimento
+    const celular = req.body.celular
+    const sobrenome = req.body.sobrenome
+    const unidade = req.body.unidade
+
+    usuarioModel.editarFuncionario(funcionario, nome, cargo, dtNascimento, celular, sobrenome, unidade)
+        .then(
+            function(resultado){
+                res.json(resultado)
+            }
+        )
+}
+
+function excluirFuncionario(req, res){
+    const funcionario = req.body.funcionario
+
+    usuarioModel.excluirFuncionario(funcionario)
+        .then(
+            function(resultado){
+                res.json(resultado)
+            }
+        )
+}
+
+function pegarFuncionariosBanco(req, res){
+    const id = req.params.idFuncionario
+
+    usuarioModel.pegarFuncionariosBanco(id)
+        .then(
+            function(resultado){
+                res.json(resultado)
+            }
+        )
+}
+
 module.exports = {
    cadastrar,
    autenticar,
@@ -138,5 +315,20 @@ module.exports = {
    pegarInfoBanco,
    cadastrarHardware,
    cadastrarUnidade,
-   cadastrarFuncionario
+   cadastrarFuncionario,
+   pegarInfoDash,
+   obterDadosDash,
+   atualizarGrafico,
+   atualizarGraficoRam,
+   obterDadosRam,
+   atualizarGraficoDisco,
+   obterDadosDisco,
+   atualizarGraficoRede,
+   obterDadosRede,
+   pegarDadosGraficosRosca,
+   editarUnidade,
+   excluirUnidade,
+   editarFuncionario,
+   excluirFuncionario,
+   pegarFuncionariosBanco
 }
