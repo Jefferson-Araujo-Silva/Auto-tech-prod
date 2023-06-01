@@ -130,7 +130,7 @@
             } else {
 
                 console.log("Houve um erro ao tentar realizar o login!");
-
+                alert("Erro ao realizar login, verifique as informações de login e tente novamente!") 
                 resposta.text().then(texto => {
                     console.error(texto);
                 });
