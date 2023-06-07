@@ -15,6 +15,7 @@ body {
     height: 100vh;
     background-color: #0f0f0f;
     position: absolute;
+    transition: background-color 1s 0.2s linear;
 }
 
 body::-webkit-scrollbar {
@@ -37,6 +38,7 @@ header {
     position: fixed;
     z-index: 2;
     transition: all 0.2s 0s linear;
+    background-color: transparent;
 
 }
 
@@ -115,6 +117,49 @@ header div a {
 }
 
 
+#divlightmode{
+    position: fixed;
+    height: 30px;
+    width: 70px;
+    background-color: gray;
+    bottom: 5%;
+    left:1%;
+    border: solid 2px  rgb(193, 183, 183);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    padding: 1px 1px 1px 1px;
+    cursor: pointer;
+    transition: background-color 1s 0.2s linear;
+}
+
+#onmode{
+    background-color: rgb(255, 255, 255);
+    height: 22px;
+    width: 22px;
+    border-radius: 50%;
+    transform: translateX(5px);
+    transition: transform 0.3s linear;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sol,
+.lua {
+    position: absolute;
+    opacity: 0;
+}
+
+.lua {
+    opacity: 1;
+    color: black;
+}
+
+.sol {
+    opacity: 0;
+    color: rgb(255, 170, 0);
+}
 
 
 
@@ -166,7 +211,7 @@ header div a {
 
 .formulario .box h2 {
     margin-top: 20px;
-    font-size: 40px;
+    font-size: 1.8rem;
     background-clip: text;
     -webkit-background-clip: text;
     background-image: -webkit-linear-gradient(left, #26e3c2, #45a0f5);
@@ -191,7 +236,7 @@ header div a {
 }
 
 .campoDigitacao{
-    margin-top: 40px;
+    margin-top: 5vh;
     display: flex;
     align-items: flex-start;
     flex-direction: column;
@@ -202,16 +247,45 @@ header div a {
     margin-top: 90px;
 }
 
+#cd2{
+    position: relative;
+}
+
 .ipt{
-    height: 60px;
-    font-size: 22px;
+    height: 8vh;
+    font-size: 1.1rem;
     border: none;
     background-color: #0f0f0f;
     color: white;
     outline: none;
     padding: 10px;
     border-radius: 5px;
-    width: 30vw;
+    width: 25vw;
+}
+
+label{
+    background-clip: text;
+    -webkit-background-clip: text;
+    background-image: -webkit-linear-gradient(left, #26e3c2, #45a0f5);
+    color: transparent;
+    font-weight: bold;
+}
+
+.eye{
+    position: absolute;
+    top: 48%;
+    right: 5%;
+    font-size: 30px;
+    cursor: pointer;
+
+}
+
+#ver{
+    display: none;
+}
+
+#nver{
+    display: block;
 }
 
 .btNext{
