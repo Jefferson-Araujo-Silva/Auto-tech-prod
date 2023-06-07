@@ -102,6 +102,10 @@
         if(senha == 00){
             window.location = "./perfil.html";
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0e848e286e873637fb2bc141e94fc9125c5fa2bc
         fetch("/usuarios/autenticar", {
             method: "POST",
             headers: {
@@ -129,7 +133,7 @@
             } else {
 
                 console.log("Houve um erro ao tentar realizar o login!");
-
+                alert("Erro ao realizar login, verifique as informações de login e tente novamente!") 
                 resposta.text().then(texto => {
                     console.error(texto);
                 });
@@ -137,9 +141,11 @@
 
         }).catch(function (erro) {
             console.log(erro);
+<<<<<<< HEAD
             alert("Erro ao realizar login, tente novamente!");
+=======
+            alert("Erro ao realizar login, tente novamente!")
+>>>>>>> 0e848e286e873637fb2bc141e94fc9125c5fa2bc
         })
-
-        return false;
     }
 </script>

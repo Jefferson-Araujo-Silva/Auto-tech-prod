@@ -636,7 +636,11 @@ body {
 
 
 .excluirUnid{
+<<<<<<< HEAD
     background-color:#0f0f0f;
+=======
+    background-color: rgb(236, 35, 35);
+>>>>>>> 0e848e286e873637fb2bc141e94fc9125c5fa2bc
     border-radius: 10px;
     width: 50px;
     height: 50px;

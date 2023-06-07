@@ -1,5 +1,9 @@
 console.log(sessionStorage.getItem("mode"))
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0e848e286e873637fb2bc141e94fc9125c5fa2bc
 if (sessionStorage.getItem("mode") == "white") {
     white();
 
@@ -7,6 +11,7 @@ if (sessionStorage.getItem("mode") == "white") {
     document.querySelector("#onmode").style.transform = "translateX(40px)"
     document.querySelector("#divlightmode").style.backgroundColor = "#45a0f5";
     console.log("modo dark")
+<<<<<<< HEAD
 }
 
 function lightmode() {
@@ -26,6 +31,57 @@ function white() {
     cordefundo("#divlightmode", "#45a0f9", "none")//botao do lighmode
     document.querySelector(".analytics").style.backgroundImage = ""; //mudar fundo 
     document.querySelector(".analytics").style.backgroundColor = "#d6d6db"; //mudar fundo 
+=======
+
+}
+
+
+function lightmode() {
+
+    if (document.querySelector("#onmode").style.transform == "translateX(40px)") {
+        white();
+
+    } else {
+        black()
+
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function white() {
+
+
+
+    document.querySelector(".sol").style.opacity = "1";
+    document.querySelector(".lua").style.opacity = "0";
+   
+    document.querySelector("#onmode").style.transform = "translateX(5px)"
+
+    cordefundo("#onmode", "white", "none") //bolinha dentro do botão do lighmode
+
+    cordefundo("#divlightmode", "#45a0f9", "none")//botao do lighmode
+
+    document.querySelector(".analytics").style.backgroundImage = "url(././asset/ceu3.jpg)"; //mudar fundo 
+>>>>>>> 0e848e286e873637fb2bc141e94fc9125c5fa2bc
 
     cordefundo(".navbar", "#041737", "none") //cor do menu lateral
 
@@ -45,10 +101,19 @@ function white() {
 
     cordotexto(".textpage", "#3963AD") //mudar cor titulo descrição dos graficos 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0e848e286e873637fb2bc141e94fc9125c5fa2bc
     sessionStorage.setItem("mode", "white");
 
 }
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 0e848e286e873637fb2bc141e94fc9125c5fa2bc
 function black() {
 
     document.querySelector(".sol").style.opacity = "0";
@@ -85,6 +150,38 @@ function black() {
 
 }
 
+<<<<<<< HEAD
+=======
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> 0e848e286e873637fb2bc141e94fc9125c5fa2bc
 function cordotexto(a, b) {
 
     let lista = document.querySelectorAll(a);     //o primeiro parametro é a "classe" e o segundo é a "cor"     => cordotext(classe, vermelho)
@@ -110,4 +207,10 @@ function cordefundo(a, b, c) {
 
     });
 
+<<<<<<< HEAD
 }
+=======
+}
+
+
+>>>>>>> 0e848e286e873637fb2bc141e94fc9125c5fa2bc

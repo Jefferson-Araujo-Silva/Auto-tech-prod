@@ -308,6 +308,7 @@ function pegarFuncionariosBanco(req, res){
         )
 }
 
+<<<<<<< HEAD
 function pegarUnidadesBanco(req, res){
     const idHardware = req.params.idHardware
 
@@ -330,6 +331,8 @@ function pegarInfoBanco2(req, res){
         )
 }
 
+=======
+>>>>>>> 0e848e286e873637fb2bc141e94fc9125c5fa2bc
 module.exports = {
    cadastrar,
    autenticar,
@@ -352,7 +355,11 @@ module.exports = {
    excluirUnidade,
    editarFuncionario,
    excluirFuncionario,
+<<<<<<< HEAD
    pegarFuncionariosBanco,
     pegarInfoBanco2,
     pegarUnidadesBanco
+=======
+   pegarFuncionariosBanco
+>>>>>>> 0e848e286e873637fb2bc141e94fc9125c5fa2bc
 }

@@ -1,6 +1,10 @@
 window.onload = function(){
     ChecarSeUsuarioEstaLogado();
+<<<<<<< HEAD
 
+=======
+    pegarInfoBanco();
+>>>>>>> 0e848e286e873637fb2bc141e94fc9125c5fa2bc
     pegarInfoDash();
 }
 function ChecarSeUsuarioEstaLogado(){
@@ -19,6 +23,10 @@ document.querySelector("#voltarperfil").addEventListener("click", ()=>{
 
     window.location = "./perfil.html";
 
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 0e848e286e873637fb2bc141e94fc9125c5fa2bc
 })
 
 function pegarInfoDash(){
@@ -32,19 +40,27 @@ function pegarInfoDash(){
 
                 for(let i = 0; i < response.length; i++){
                     hardware.innerHTML += `<option value = ${info[i].id_hardware}>${info[i].numero_serie}</option>`
+<<<<<<< HEAD
+=======
+        
+>>>>>>> 0e848e286e873637fb2bc141e94fc9125c5fa2bc
                 }
                 obterDadosDash()
                 obterDadosRam()
                 obterDadosDisco()
                 obterDadosRede()
                 pegarDadosGraficosRosca()
+<<<<<<< HEAD
                 pegarInfoBanco();
+=======
+>>>>>>> 0e848e286e873637fb2bc141e94fc9125c5fa2bc
             })
         }
     })
 }
 
 function recarregarDashs(){
+<<<<<<< HEAD
     pegarInfoBanco();
     obterDadosDash2()
     obterDadosRam2()
@@ -71,10 +87,26 @@ function pegarInfoBanco(){
     const numSerie = document.querySelector('#selHardware').value
 
     fetch(`/usuarios/pegarInfoBanco/${numSerie}`).then(function (resposta){
+=======
+    obterDadosDash2()
+    obterDadosRam2()
+    obterDadosDisco2()
+    pegarDadosGraficosRosca()
+    myChart4.update()
+    /* obterDadosRede() */
+}
+
+function pegarInfoBanco(){
+    let unidade = document.querySelector('#selUnidade')
+    let id = sessionStorage.getItem('ID_USUARIO')
+
+    fetch(`/usuarios/pegarInfoBanco/${id}`).then(function (resposta){
+>>>>>>> 0e848e286e873637fb2bc141e94fc9125c5fa2bc
         if(resposta.ok){
             resposta.json().then(function(response){
                 var info = JSON.parse((JSON.stringify(response)))
 
+<<<<<<< HEAD
                 unidade.innerHTML = info[0].nome
             })
         }
@@ -100,6 +132,12 @@ function pegarInfoBanco(){
                 modCpu.innerHTML = "<b>Modelo:</b> " + infos[0].modelo
                 modRam.innerHTML = "<b>Modelo:</b> " + infos[2].modelo
                 modDisco.innerHTML = "<b>Modelo:</b> " + infos[1].modelo
+=======
+                for(let i = 0; i < response.length; i++){
+                    unidade.innerHTML += `<option value = ${info[i].id_unidade}>${info[i].nome_unidade}</option>`
+                }
+
+>>>>>>> 0e848e286e873637fb2bc141e94fc9125c5fa2bc
             })
         }
     })
@@ -421,6 +459,23 @@ function atualizarGraficoRede(hardware, dados, myChart3){
     })
 }
 
+<<<<<<< HEAD
+=======
+let myChart1
+let myChart2
+let myChart4
+let myChart6
+let myChart8
+
+function excluirChartRosca(){
+    /* myChart1.destroy()
+    myChart2.destroy() */
+    myChart4.destroy()
+    myChart6.destroy()
+    myChart8.destroy()
+}
+
+>>>>>>> 0e848e286e873637fb2bc141e94fc9125c5fa2bc
 function pegarDadosGraficosRosca2(){
     let hardware = document.querySelector('#selHardware').value
     fetch(`/usuarios/pegarDadosGraficosRosca/${hardware}`).then((resposta)=>resposta.json().then((response)=>trocarDadosRosca(response, myChart1, myChart2, myChart4, myChart6, myChart8)))
@@ -439,24 +494,34 @@ function trocarDadosRosca(dadosR, chart1, chart2, chart4, chart6, chart8){
     chart.update()
 }
 
+<<<<<<< HEAD
 let contador
 
+=======
+>>>>>>> 0e848e286e873637fb2bc141e94fc9125c5fa2bc
 function pegarDadosGraficosRosca(){
     let hardware = document.querySelector('#selHardware').value
     fetch(`/usuarios/pegarDadosGraficosRosca/${hardware}`).then((resposta)=>{
         if(resposta.ok){
             resposta.json().then((response)=>{
+<<<<<<< HEAD
                 clearTimeout(contador)
 
                 exibirKpi(response)
                 //exibirDadosGraficoRosca(response, myChart1, myChart2, myChart4, myChart6, myChart8)
 
                 atualizarGraficosDeRosca()
+=======
+                console.log(response)
+                console.log(hardware)
+                exibirDadosGraficoRosca(response, hardware, myChart1, myChart2, myChart4, myChart6, myChart8)
+>>>>>>> 0e848e286e873637fb2bc141e94fc9125c5fa2bc
             })
         }
     })
 }
 
+<<<<<<< HEAD
 function atualizarGraficosDeRosca(){
 
     let hardware = document.querySelector('#selHardware').value
@@ -475,10 +540,61 @@ function atualizarGraficosDeRosca(){
 }
 verificarCoresKpi
 function exibirKpi(dadosR){
+=======
+function exibirDadosGraficoRosca(dadosR, hardware, myChart1, myChart2, myChart4, myChart6, myChart8){
+    let labels = ['Acima', 'Abaixo']
+
+    let dadosRam = {
+        labels,
+        datasets: [
+        {
+            label: 'Consumo de Memória RAM',
+            data: [],
+            backgroundColor: [
+                '#5F57BD',
+                '#362F7C'
+            ],
+            borderColor: ['#5F57BD'],
+            hoverOffset: 4
+        }]
+    }
+
+    let dadosDisco = {
+        labels,
+        datasets: [
+        {
+            label: 'Consumo de Disco',
+            data: [],
+            backgroundColor: [
+                '#964EBF',
+                '#653381'
+            ],
+            borderColor: ['#964EBF'],
+            hoverOffset: 4
+        }]
+    }
+
+    let dadosCpu = {
+        labels,
+        datasets: [
+        {
+            label: 'Consumo de CPU',
+            data: [],
+            backgroundColor: [
+                '#A04564',
+                '#792440'
+            ],
+            borderColor: ['#A04564'],
+            hoverOffset: 4
+        }]
+    }
+
+>>>>>>> 0e848e286e873637fb2bc141e94fc9125c5fa2bc
     let kpiRam = document.querySelector('#kpi02')
     let kpiCpu = document.querySelector('#kpi04')
     let kpiDisco = document.querySelector('#kpi03')
 
+<<<<<<< HEAD
     kpiRam.innerHTML = ((dadosR[0].RamAcima / (dadosR[0].RamAcima + dadosR[0].RamAbaixo)) * 100).toFixed(2) + "%"
     kpiCpu.innerHTML = ((dadosR[0].CpuAcima / (dadosR[0].CpuAcima + dadosR[0].CpuAbaixo)) * 100).toFixed(2) + "%"
     kpiDisco.innerHTML = ((dadosR[0].DiscoAcima / (dadosR[0].DiscoAcima + dadosR[0].DiscoAbaixo)) * 100).toFixed(2) + "%"
@@ -505,6 +621,65 @@ function exibirDadosGraficoRosca(dadosR, myChart1, myChart2, myChart4, myChart6,
     myChart4.update()
     myChart6.update()
     myChart8.update()
+=======
+    for(let i = 0; i < dadosR.length; i++){
+        let atual = dadosR[dadosR.length - (i + 1)]
+        dadosRam.datasets[0].data.push(atual.RamAcima, atual.RamAbaixo)
+        dadosDisco.datasets[0].data.push(atual.DiscoAcima, atual.DiscoAbaixo)
+        dadosCpu.datasets[0].data.push(atual.CpuAcima, atual.CpuAbaixo)
+        kpiRam.innerHTML = ((atual.RamAcima / (atual.RamAcima + atual.RamAbaixo)) * 100) + "%" 
+        kpiCpu.innerHTML = ((atual.CpuAcima / (atual.CpuAcima + atual.CpuAbaixo)) * 100) + "%" 
+        kpiDisco.innerHTML = ((atual.DiscoAcima / (atual.DiscoAcima + atual.DiscoAbaixo)) * 100) + "%" 
+    }
+
+    verificarCoresKpi(dadosR[0])
+
+    const config1 = {
+        type: 'doughnut', 
+        data: dadosRam
+    }
+
+    const config2 = {
+        type: 'doughnut', 
+        data: dadosDisco
+    }
+
+    const config3 = {
+        type: 'doughnut', 
+        data: dadosCpu
+    }
+
+    /* if(myChart4 != null || myChart6 != null || myChart8 != null){
+        excluirChartRosca()
+    } */
+
+    /* myChart1 = new Chart(
+        document.getElementById('myChart1'),
+        config
+    )
+
+    myChart2 = new Chart(
+        document.getElementById('myChart2'),
+        config
+    ) */
+
+    myChart4 = new Chart(
+        document.getElementById('myChart4'),
+        config1
+    )
+
+    myChart6 = new Chart(
+        document.getElementById('myChart6'),
+        config2
+    )
+
+    myChart8 = new Chart(
+        document.getElementById('myChart8'),
+        config3
+    )
+
+    /* setTimeout(()=>atualizarGraficoRede(hardware, dados, myChart3),5000) */
+>>>>>>> 0e848e286e873637fb2bc141e94fc9125c5fa2bc
 }
 
 function verificarCoresKpi(dados){

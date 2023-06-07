@@ -141,11 +141,15 @@ function pegarDadosGraficosRosca(idHardware){
     (select count(porcentagem_uso) from metrica join componente as c on id_componente = fk_componente join modelo_componente on id_modelo_componente = c.fk_modelo_componente where dt_hora > DATEADD(HOUR, -207, GETDATE()) and porcentagem_uso > 80 and tipo = 'Disco' and c.fk_hardware = ${idHardware}) as DiscoAcima,
     (select count(porcentagem_uso) from metrica join componente as c on id_componente = fk_componente join modelo_componente on id_modelo_componente = c.fk_modelo_componente where dt_hora > DATEADD(HOUR, -207, GETDATE()) and porcentagem_uso < 80 and tipo = 'CPU' and c.fk_hardware = ${idHardware}) as CpuAbaixo,
     (select count(porcentagem_uso) from metrica join componente as c on id_componente = fk_componente join modelo_componente on id_modelo_componente = c.fk_modelo_componente where dt_hora > DATEADD(HOUR, -207, GETDATE()) and porcentagem_uso < 80 and tipo = 'Memória RAM' and c.fk_hardware = ${idHardware}) as RamAbaixo,
+<<<<<<< HEAD
     (select count(porcentagem_uso) from metrica join componente as c on id_componente = fk_componente join modelo_componente on id_modelo_componente = c.fk_modelo_componente where dt_hora > DATEADD(HOUR, -207, GETDATE()) and porcentagem_uso < 80 and tipo = 'Disco' and c.fk_hardware = ${idHardware}) as DiscoAbaixo,
     (select count(download_mbps) from capturas_rede join hardware as h on id_hardware = fk_hardware where dt_hora > DATEADD(HOUR, -207, GETDATE()) and download_mbps > 50 and fk_hardware = ${idHardware}) as DownloadAcima,
 	(select count(download_mbps) from capturas_rede join hardware as h on id_hardware = fk_hardware where dt_hora > DATEADD(HOUR, -207, GETDATE()) and download_mbps < 50 and fk_hardware = ${idHardware}) as DownloadAbaixo,
 	(select count(upload_mbps) from capturas_rede join hardware as h on id_hardware = fk_hardware where dt_hora > DATEADD(HOUR, -207, GETDATE()) and upload_mbps > 50 and fk_hardware = ${idHardware}) as UploadAcima,
 	(select count(upload_mbps) from capturas_rede join hardware as h on id_hardware = fk_hardware where dt_hora > DATEADD(HOUR, -207, GETDATE()) and upload_mbps < 50 and fk_hardware = ${idHardware}) as UploadAbaixo
+=======
+    (select count(porcentagem_uso) from metrica join componente as c on id_componente = fk_componente join modelo_componente on id_modelo_componente = c.fk_modelo_componente where dt_hora > DATEADD(HOUR, -207, GETDATE()) and porcentagem_uso < 80 and tipo = 'Disco' and c.fk_hardware = ${idHardware}) as DiscoAbaixo
+>>>>>>> 0e848e286e873637fb2bc141e94fc9125c5fa2bc
     from metrica join componente as c on id_componente = fk_componente join modelo_componente on id_modelo_componente = c.fk_modelo_componente 
     where dt_hora > DATEADD(HOUR, -207, GETDATE());
     `
@@ -161,8 +165,12 @@ function editarUnidade(unidade, telefone, nome, cep, logradouro, bairro, numero)
     @p_cep = '${cep}',
     @p_logradouro = '${logradouro}',
     @p_numero = '${numero}',
+<<<<<<< HEAD
     @p_bairro = '${bairro}';
     `
+=======
+    @p_bairro = '${bairro}';`
+>>>>>>> 0e848e286e873637fb2bc141e94fc9125c5fa2bc
     return database.executar(instrucao)
 }
 
@@ -194,6 +202,7 @@ function pegarFuncionariosBanco(id){
     return database.executar(instrucao)
 }
 
+<<<<<<< HEAD
 function pegarInfoBanco2(id){
     let instrucao = `
     select so, capacidade, modelo from hardware join componente c on id_hardware = c.fk_hardware 
@@ -202,6 +211,8 @@ join modelo_componente on id_modelo_componente = fk_modelo_componente where id_h
     return database.executar(instrucao)
 }
 
+=======
+>>>>>>> 0e848e286e873637fb2bc141e94fc9125c5fa2bc
 module.exports = {
     cadastrar,
     autenticar,
@@ -224,7 +235,11 @@ module.exports = {
     excluirUnidade,
     editarFuncionario,
     excluirFuncionario,
+<<<<<<< HEAD
     pegarFuncionariosBanco,
     pegarInfoBanco2,
     pegarUnidadesBanco
+=======
+    pegarFuncionariosBanco
+>>>>>>> 0e848e286e873637fb2bc141e94fc9125c5fa2bc
 };
