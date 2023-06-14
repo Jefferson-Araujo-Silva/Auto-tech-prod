@@ -6,11 +6,7 @@ nomeCliente.innerHTML = sessionStorage.getItem('EMPRESA_USUARIO')
 window.onload(ChecarSeUsuarioEstaLogado())
 function ChecarSeUsuarioEstaLogado(){
     const idUsuario = sessionStorage.getItem('ID_USUARIO')
-<<<<<<< HEAD
     const isLogado = (idUsuario != "" && idUsuario != null)
-=======
-    const isLogado = (idUsuario != "")
->>>>>>> 0e848e286e873637fb2bc141e94fc9125c5fa2bc
 
     if(isLogado == false){
         alert('Realize o login para acessar essa janela!')

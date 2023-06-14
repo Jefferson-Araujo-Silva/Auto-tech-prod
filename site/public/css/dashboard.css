@@ -234,11 +234,7 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-<<<<<<< HEAD
     width: 25%;
-=======
-    width: 20%;
->>>>>>> 0e848e286e873637fb2bc141e94fc9125c5fa2bc
     height: 100%;
     color: rgb(190, 190, 190);
     padding: 5px;
@@ -292,11 +288,7 @@ body{
     display: flex;
     flex-direction: column;
     gap: 3px;
-<<<<<<< HEAD
     margin: 5px 0 0 10px;
-=======
-    margin: 5px 0 0 -20px;
->>>>>>> 0e848e286e873637fb2bc141e94fc9125c5fa2bc
 }
 
 .b01{
@@ -366,7 +358,6 @@ body{
     background-color: #242731;
     border-radius: 10px;
     box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.166);
-<<<<<<< HEAD
 }
 
 #myChart3{
@@ -374,8 +365,6 @@ body{
     height: 33vh;
     padding: 5px;
     position: relative;
-=======
->>>>>>> 0e848e286e873637fb2bc141e94fc9125c5fa2bc
 }
 
 .graf04{
@@ -528,7 +517,6 @@ body{
     color: white;
     margin-left: 55vw;
     margin-top: -6vh;
-<<<<<<< HEAD
 }
 
 .nomeUnidade{
@@ -558,6 +546,4 @@ body{
     color: white;
     font-size: 14px;
     margin-left: 10px;
-=======
->>>>>>> 0e848e286e873637fb2bc141e94fc9125c5fa2bc
 }
